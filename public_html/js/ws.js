@@ -16,14 +16,17 @@ Player = function () {
         y: 0
     };
     this.update = function () {
-        this.position.x += Math.sin(this.rotation.toRad()) * this.speed;
-        this.position.y += -Math.cos(this.rotation.toRad()) * this.speed;
-        $('#player').css({top: this.position.y});
-        $('#player').css({left: this.position.x});
-        $('#player').css({'-webkit-transform': 'rotate(' + this.rotation + 'deg)',
-            '-moz-transform': 'rotate(' + this.rotation + 'deg)',
-            '-ms-transform': 'rotate(' + this.rotation + 'deg)',
-            'transform': 'rotate(' + this.rotation + 'deg)'});
+        if(this.speed > 0) {
+            this.position.x += Math.sin(this.rotation.toRad()) * this.speed;
+            this.position.y += -Math.cos(this.rotation.toRad()) * this.speed;
+            $('#player').css({top: this.position.y});
+            $('#player').css({left: this.position.x});
+        }
+        if(input.isDown('LEFT') || input.isDown('RIGHT'))
+            $('#player').css({'-webkit-transform': 'rotate(' + this.rotation + 'deg)',
+                '-moz-transform': 'rotate(' + this.rotation + 'deg)',
+                '-ms-transform': 'rotate(' + this.rotation + 'deg)',
+                'transform': 'rotate(' + this.rotation + 'deg)'});
     };
     this.rotate = function (deg) {
         this.speed *= 0.99;
