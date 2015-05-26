@@ -16,6 +16,8 @@ Player = function () {
         y: 0
     };
     this.update = function () {
+        if(this.speed > 0)
+            this.speed *= 0.985;
         this.position.x += Math.sin(this.rotation.toRad()) * this.speed;
         this.position.y += -Math.cos(this.rotation.toRad()) * this.speed;
         $('#player').css({top: this.position.y});
@@ -27,11 +29,12 @@ Player = function () {
     };
     this.rotate = function (deg) {
         this.speed *= 0.985;
-        this.rotation += this.rotationSpeed * deg;
+        speedFactor = this.speed / 2.5 + 1
+        console.log(speedFactor);
+        this.rotation += this.rotationSpeed * deg / speedFactor;
     };
     this.speedUp = function () {
         player.speed += player.acceleration;
-        player.speed *= 0.97;
     };
 };
 
