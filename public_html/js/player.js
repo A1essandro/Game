@@ -19,7 +19,7 @@ Player = function (id) {
     };
     this.weapon = {
         caliber: 2,
-        speed: 15
+        speed: 10
     };
 
     this.update = function () {
