@@ -25,6 +25,7 @@ Player = function () {
         speedFactor = this.speed / 2.5 + 1;
         console.log(speedFactor);
         this.rotation += this.rotationSpeed * deg / speedFactor;
+        this.rotation %= 360;
     };
     this.speedUp = function () {
         if (this.speed < 1000 * this.acceleration)
