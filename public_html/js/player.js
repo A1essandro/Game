@@ -1,7 +1,10 @@
 Player = function (id) {
 
-    $('body').append('<div id="player' + id + '" style="position: absolute; width: 10px; height: 15px; background: red; border-top-left-radius: 50%;border-top-right-radius: 50%;"></div>');
-    this.div = $('#player' + id);
+    $('body').append('<div id="bolid' + id +
+            '" style="position: absolute; width: 10px; height: 15px; background: red; border-top-left-radius: 50%;border-top-right-radius: 50%;">' +
+            '</div><span id="sign' + id + '" style="position:absolute; color: silver">asdad</span>');
+    this.div = $('#bolid' + id);
+    this.sign = $('#sign' + id);
     this.speed = 0;
     this.rateOfFire = 1;
     this.lastFire = 0;
@@ -20,12 +23,15 @@ Player = function (id) {
     };
 
     this.update = function () {
+        this.sign.html(this.speed);
+        this.sign.css({top: this.position.y + 20, left: this.position.x - this.sign.width() / 2});
+
         if (this.speed !== 0) {
             this.position.x += Math.sin(this.rotation.toRad()) * this.speed;
             this.position.y += -Math.cos(this.rotation.toRad()) * this.speed;
-            this.div.css({top: this.position.y});
-            this.div.css({left: this.position.x});
+            this.div.css({top: this.position.y, left: this.position.x});
         }
+
         if (input.isDown('LEFT') || input.isDown('RIGHT') || input.isDown('SLEFT') || input.isDown('SRIGHT'))
             this.div.css({'-webkit-transform': 'rotate(' + this.rotation + 'deg)',
                 '-moz-transform': 'rotate(' + this.rotation + 'deg)',
