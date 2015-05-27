@@ -35,7 +35,7 @@ Player = function (id) {
 
     this.rotate = function (deg) {
         this.speed *= 0.99;
-        speedFactor = this.weight / 30 * this.speed + 1;
+        speedFactor = this.weight / 30 * Math.abs(this.speed) + 1;
         this.rotation += this.rotationSpeed * deg / speedFactor;
         this.rotation %= 360;
     };
