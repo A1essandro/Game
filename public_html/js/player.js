@@ -5,10 +5,11 @@ Player = function (id) {
     this.speed = 0;
     this.rateOfFire = 1;
     this.lastFire = 0;
-    this.acceleration = 0.01;
-    this.rotation = 0;
-    this.rotationSpeed = 2;
+    this.horsepower = 500;
     this.weight = 50;
+    this.acceleration = this.horsepower / this.weight / 1000;
+    this.rotation = 0;
+    this.rotationSpeed = this.horsepower / this.weight / 10;
     this.position = {
         x: 0,
         y: 0
@@ -34,13 +35,13 @@ Player = function (id) {
 
     this.rotate = function (deg) {
         this.speed *= 0.99;
-        speedFactor = this.speed / 2.5 + 1;
+        speedFactor = this.weight / 30 * this.speed + 1;
         this.rotation += this.rotationSpeed * deg / speedFactor;
         this.rotation %= 360;
     };
 
     this.speedUp = function () {
-        if (this.speed < 1000 * this.acceleration)
+        if (this.speed < this.horsepower / this.weight)
             this.speed += this.acceleration;
     };
 
