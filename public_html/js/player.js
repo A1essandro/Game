@@ -1,7 +1,6 @@
 Player = function (id) {
 
-    $('#map').append('<div id="bolid' + id +
-            '" style="position: absolute; width: 2vh; height: 3vh; background: red; border-top-left-radius: 50%;border-top-right-radius: 50%;">' +
+    $('#map').append('<div class="bolid" id="bolid' + id + '">' +
             '</div><span id="sign' + id + '" style="position:absolute; color: silver">asdad</span>');
     this.div = $('#bolid' + id);
     this.sign = $('#sign' + id);
