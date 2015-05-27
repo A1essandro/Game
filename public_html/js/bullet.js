@@ -2,7 +2,7 @@ Bullet = function (player, id) {
 
     $('body').append('<div id="bullet' + id + '" style="position:absolute; width:2px; height:2px; background:black;"></div>');
     this.div = $('#bullet' + id);
-    this.speed = 15;
+    this.speed = 10 + player.speed / 2;
     this.rotation = player.rotation;
     this.out = false;
 

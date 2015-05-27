@@ -1,5 +1,7 @@
-Player = function () {
+Player = function (id) {
 
+    $('body').append('<div id="player' + id + '" style="position: absolute; width: 10px; height: 15px; background: red; border-top-left-radius: 50%;border-top-right-radius: 50%;"></div>');
+    this.div = $('#player' + id);
     this.speed = 0;
     this.rateOfFire = 1;
     this.lastFire = 0;
@@ -15,11 +17,11 @@ Player = function () {
         if (this.speed > 0) {
             this.position.x += Math.sin(this.rotation.toRad()) * this.speed;
             this.position.y += -Math.cos(this.rotation.toRad()) * this.speed;
-            $('#player').css({top: this.position.y});
-            $('#player').css({left: this.position.x});
+            this.div.css({top: this.position.y});
+            this.div.css({left: this.position.x});
         }
         if (input.isDown('LEFT') || input.isDown('RIGHT'))
-            $('#player').css({'-webkit-transform': 'rotate(' + this.rotation + 'deg)',
+            this.div.css({'-webkit-transform': 'rotate(' + this.rotation + 'deg)',
                 '-moz-transform': 'rotate(' + this.rotation + 'deg)',
                 '-ms-transform': 'rotate(' + this.rotation + 'deg)',
                 'transform': 'rotate(' + this.rotation + 'deg)'});

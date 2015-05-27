@@ -6,7 +6,7 @@ Number.prototype.toRad = function () {
     return this * Math.PI / 180;
 };
 
-var player = new Player();
+var player = new Player(1);
 function main() {
     if (input.isDown('UP'))
         player.speedUp();
