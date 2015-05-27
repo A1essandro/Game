@@ -20,7 +20,7 @@ Player = function (id) {
             this.div.css({top: this.position.y});
             this.div.css({left: this.position.x});
         }
-        if (input.isDown('LEFT') || input.isDown('RIGHT'))
+        if (input.isDown('LEFT') || input.isDown('RIGHT') || input.isDown('SLEFT') || input.isDown('SRIGHT'))
             this.div.css({'-webkit-transform': 'rotate(' + this.rotation + 'deg)',
                 '-moz-transform': 'rotate(' + this.rotation + 'deg)',
                 '-ms-transform': 'rotate(' + this.rotation + 'deg)',

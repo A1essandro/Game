@@ -22,6 +22,10 @@ function main() {
         player.rotate(-1);
     if (input.isDown('RIGHT'))
         player.rotate(1);
+    if (input.isDown('SLEFT'))
+        player.rotate(-0.1);
+    if (input.isDown('SRIGHT'))
+        player.rotate(0.1);
 
     if (input.isDown('SPACE'))
         player.shot();

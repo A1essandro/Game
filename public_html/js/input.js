@@ -25,6 +25,12 @@
             case 83:
                 key = 'DOWN';
                 break;
+            case 81:
+                key = 'SLEFT';
+                break;
+            case 69:
+                key = 'SRIGHT';
+                break;
             default:
                 // Convert ASCII codes to letters
                 key = String.fromCharCode(code);
