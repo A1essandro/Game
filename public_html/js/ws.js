@@ -23,5 +23,16 @@ function main() {
     if (input.isDown('RIGHT'))
         player.rotate(1);
 
+    if (input.isDown('SPACE'))
+        player.shot();
+
     player.update();
+
+    for (b = 0; b < bullets.length; b++) {
+        if (bullets[b].out) {
+            delete bullets[b];
+            bullets.splice(b, 1);
+        } else
+            bullets[b].update();
+    }
 }
