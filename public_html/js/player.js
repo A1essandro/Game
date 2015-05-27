@@ -1,7 +1,7 @@
 Player = function (id) {
 
-    $('body').append('<div id="bolid' + id +
-            '" style="position: absolute; width: 10px; height: 15px; background: red; border-top-left-radius: 50%;border-top-right-radius: 50%;">' +
+    $('#map').append('<div id="bolid' + id +
+            '" style="position: absolute; width: 2vh; height: 3vh; background: red; border-top-left-radius: 50%;border-top-right-radius: 50%;">' +
             '</div><span id="sign' + id + '" style="position:absolute; color: silver">asdad</span>');
     this.div = $('#bolid' + id);
     this.sign = $('#sign' + id);
@@ -19,17 +19,17 @@ Player = function (id) {
     };
     this.weapon = {
         caliber: 2,
-        speed: 10
+        speed: 4.4
     };
 
     this.update = function () {
         this.sign.html(this.speed);
-        this.sign.css({top: this.position.y + 20, left: this.position.x - this.sign.width() / 2});
+        // this.sign.css({top: (this.position.y + 20)+'vh', left: (this.position.x)+'vh'});
 
         if (this.speed !== 0) {
             this.position.x += Math.sin(this.rotation.toRad()) * this.speed;
             this.position.y += -Math.cos(this.rotation.toRad()) * this.speed;
-            this.div.css({top: this.position.y, left: this.position.x});
+            this.div.css({top: this.position.y+'vh', left: this.position.x+'vh'});
         }
 
         if (input.isDown('LEFT') || input.isDown('RIGHT') || input.isDown('SLEFT') || input.isDown('SRIGHT'))
