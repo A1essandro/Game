@@ -14,7 +14,7 @@ Player = function (id) {
     };
 
     this.update = function () {
-        if (this.speed > 0) {
+        if (this.speed !== 0) {
             this.position.x += Math.sin(this.rotation.toRad()) * this.speed;
             this.position.y += -Math.cos(this.rotation.toRad()) * this.speed;
             this.div.css({top: this.position.y});
@@ -44,6 +44,7 @@ Player = function (id) {
         if (now - this.lastFire > this.rateOfFire) {
             bullets.push(new Bullet(this, parseInt(now)));
             this.lastFire = now;
+            this.speed -= 1;
         }
     };
 };

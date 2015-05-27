@@ -10,7 +10,7 @@ var player = new Player(1);
 function main() {
     if (input.isDown('UP'))
         player.speedUp();
-    else if (player.speed < 0.075)
+    else if (Math.abs(player.speed) < 0.075)
         player.speed = 0;
     else
         player.speed *= 0.995;
