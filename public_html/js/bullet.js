@@ -1,11 +1,14 @@
 Bullet = function (player, id) {
 
-    $('body').append('<div id="bullet' + id + '" style="position:absolute; width:2px; height:2px; background:black;"></div>');
+    this.caliber = player.weapon.caliber;
+    $('body').append('<div id="bullet' + id +
+            '" style="position:absolute; width:' + Math.max(this.caliber / 2, 2) +
+            'px; height:' + Math.max(this.caliber / 2, 2) +
+            'px; background:black;border-radius:50%"></div>');
     this.div = $('#bullet' + id);
     this.speed = player.weapon.speed + player.speed / 2;
     this.rotation = player.rotation;
     this.out = false;
-    this.caliber = player.weapon.caliber;
 
     this.position = {
         x: player.position.x,
