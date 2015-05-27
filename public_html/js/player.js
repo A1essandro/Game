@@ -8,9 +8,14 @@ Player = function (id) {
     this.acceleration = 0.01;
     this.rotation = 0;
     this.rotationSpeed = 2;
+    this.weight = 50;
     this.position = {
         x: 0,
         y: 0
+    };
+    this.weapon = {
+        caliber: 2,
+        speed: 15
     };
 
     this.update = function () {
@@ -44,7 +49,8 @@ Player = function (id) {
         if (now - this.lastFire > this.rateOfFire) {
             bullets.push(new Bullet(this, parseInt(now)));
             this.lastFire = now;
-            this.speed -= 1;
+            this.speed -= this.weapon.caliber * this.weapon.speed / this.weight;
         }
-    };
+    }
+    ;
 };
