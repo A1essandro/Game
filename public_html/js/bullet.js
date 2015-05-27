@@ -8,7 +8,7 @@ Bullet = function (player, id) {
             this.speed +
             'px; background:#ff9;border-radius:50%"></div>');
     this.div = $('#bullet' + id);
-    this.rotation = player.rotation;
+    this.rotation = player.rotation + (10 * Math.random() - 5) * this.caliber / this.speed;
     this.out = false;
     this.div.css({'-webkit-transform': 'rotate(' + this.rotation + 'deg)',
         '-moz-transform': 'rotate(' + this.rotation + 'deg)',
