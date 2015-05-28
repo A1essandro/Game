@@ -9,15 +9,15 @@ Player = function (id) {
     this.lastFire = 0;
     this.horsepower = 500;
     this.weight = 50;
-    this.acceleration = this.horsepower / this.weight / 1000;
+    this.acceleration = this.horsepower / this.weight / 10000;
     this.rotation = 0;
-    this.rotationSpeed = this.horsepower / this.weight / 10;
+    this.rotationSpeed = this.horsepower / this.weight / 15;
     this.position = {
         x: 0,
         y: 0
     };
     this.weapon = {
-        caliber: 2,
+        caliber: 1.5,
         speed: 4.4
     };
 
@@ -28,7 +28,7 @@ Player = function (id) {
         if (this.speed !== 0) {
             this.position.x += Math.sin(this.rotation.toRad()) * this.speed;
             this.position.y += -Math.cos(this.rotation.toRad()) * this.speed;
-            this.div.css({top: this.position.y+'vh', left: this.position.x+'vh'});
+            this.div.css({top: this.position.y + 'vh', left: this.position.x + 'vh'});
         }
 
         if (input.isDown('LEFT') || input.isDown('RIGHT') || input.isDown('SLEFT') || input.isDown('SRIGHT'))
