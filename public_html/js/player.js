@@ -45,9 +45,17 @@ Player = function (id) {
         this.rotation %= 360;
     };
 
-    this.speedUp = function () {
-        if (this.speed < this.horsepower / this.weight)
-            this.speed += this.acceleration;
+    this.speedUp = function (direction) {
+        if (direction > 0) {
+            if (this.speed < this.horsepower / this.weight)
+                this.speed += this.acceleration;
+        } else {
+            if (this.speed < this.horsepower / 4 / this.weight) {
+                this.speed -= (this.speed > 0) ?
+                        this.acceleration :
+                        this.acceleration / 4;
+            }
+        }
     };
 
     this.shot = function () {

@@ -9,14 +9,13 @@ Number.prototype.toRad = function () {
 var player = new Player(1);
 function main() {
     if (input.isDown('UP'))
-        player.speedUp();
+        player.speedUp(1);
+    else if (input.isDown('DOWN'))
+        player.speedUp(-1);
     else if (Math.abs(player.speed) < 0.01)
         player.speed = 0;
     else
         player.speed *= 0.995;
-
-    if (input.isDown('DOWN'))
-        player.speed *= 0.98;
 
     if (input.isDown('LEFT'))
         player.rotate(-1);
