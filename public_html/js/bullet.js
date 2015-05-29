@@ -6,7 +6,14 @@ Bullet = function (player, id) {
             '" style="width:' + this.caliber / 5 + 'vh; height: ' +
             this.speed + 'vh;"></div>');
     this.div = $('#bullet' + id);
-    this.rotation = player.rotation + (10 * Math.random() - 5) * this.caliber / this.speed;
+
+    this.getDeviation = function () {
+        r = 10 * Math.random() - 5;
+        speedDeviation = 1 + (Math.abs(player.speed) * 15);
+        return  r * this.caliber / this.speed * speedDeviation;
+    };
+    this.rotation = player.rotation + this.getDeviation();
+
     this.out = false;
     this.div.css({'-webkit-transform': 'rotate(' + this.rotation + 'deg)',
         '-moz-transform': 'rotate(' + this.rotation + 'deg)',
@@ -47,6 +54,7 @@ Bullet = function (player, id) {
         this.div.css({top: this.position.y + 'vh'});
         this.div.css({left: this.position.x + 'vh'});
     };
+
 };
 
 window.bullets = [];
