@@ -63,7 +63,7 @@ Player = function (id) {
         if (now - this.lastFire > this.rateOfFire) {
             bullets.push(new Bullet(this, parseInt(now)));
             this.lastFire = now;
-            this.speed -= this.weapon.caliber * this.weapon.speed / this.weight;
+            this.speed -= this.weapon.caliber * this.weapon.speed / Math.pow(this.weight, 1.5);
         }
     }
     ;
